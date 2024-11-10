@@ -45,7 +45,7 @@ class CustomButton extends StatelessWidget {
         onPressed: onPressed,
         child: Text(
           text,
-          style: AppTextStyle.getbodyTextStyle(
+          style: getbodyTextStyle(
             color: textColor ?? AppColors.primaryColor,
             fontSize: fontsize,
           ),

@@ -4,7 +4,7 @@ class AppLocalStorage {
   static const String token = "token";
   static const String isOnboardingShown = "isOnboardingShown";
   static const String userToken = "userToken";
-  static const String isLoggedIn= "isLoggedIn";
+  static const String isLoggedIn = "isLoggedIn";
 
   static late SharedPreferences _sharedPreferences;
 

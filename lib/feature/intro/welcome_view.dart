@@ -5,7 +5,7 @@ import 'package:se7ety/core/functions/navigation.dart';
 import 'package:se7ety/core/utils/colors.dart';
 import 'package:se7ety/core/utils/text_style.dart';
 import 'package:se7ety/core/widgets/custom_button.dart';
-import 'package:se7ety/feature/auth/presntation/page/login_view.dart';
+import 'package:se7ety/feature/auth/presentation/page/login_view.dart';
 
 class WelcomeView extends StatelessWidget {
   const WelcomeView({super.key});
@@ -28,13 +28,12 @@ class WelcomeView extends StatelessWidget {
           const Gap(15),
           Text(
             "اهلا بيك",
-            style: AppTextStyle.getHeadlineTextStyle(
-                color: AppColors.primaryColor),
+            style: getHeadlineTextStyle(color: AppColors.primaryColor),
           ),
           const Gap(10),
           Text(
             " سجل و احجز عند دكنورك و انت في بيتك",
-            style: AppTextStyle.getbodyTextStyle(color: AppColors.textColor),
+            style: getbodyTextStyle(color: AppColors.textColor),
           ),
           const Spacer(
             flex: 4,
@@ -52,8 +51,7 @@ class WelcomeView extends StatelessWidget {
                 children: [
                   Text(
                     "سجل دلوقتي كـ ",
-                    style: AppTextStyle.getTtileTextStyle(
-                        color: AppColors.whiteColor),
+                    style: getTtileTextStyle(color: AppColors.whiteColor),
                   ),
                   const Gap(20),
                   CustomButton(
@@ -62,7 +60,7 @@ class WelcomeView extends StatelessWidget {
                     height: 50,
                     color: AppColors.whiteColor.withOpacity(0.7),
                     onPressed: () {
-                      pushReplacement(
+                      push(
                           context,
                           const LoginView(
                             userType: UserType.doctor,
@@ -76,7 +74,7 @@ class WelcomeView extends StatelessWidget {
                     height: 50,
                     color: AppColors.whiteColor.withOpacity(0.7),
                     onPressed: () {
-                      pushReplacement(
+                      push(
                           context,
                           const LoginView(
                             userType: UserType.patient,

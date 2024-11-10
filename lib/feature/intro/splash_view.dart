@@ -5,7 +5,7 @@ import 'package:se7ety/core/functions/navigation.dart';
 import 'package:se7ety/core/services/local_storage.dart';
 import 'package:se7ety/feature/intro/onbording/onbording_view.dart';
 import 'package:se7ety/feature/intro/welcome_view.dart';
-import 'package:se7ety/feature/patient/nab_bar.dart';
+import 'package:se7ety/feature/patient/nav_bar.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -45,17 +45,6 @@ class _SplashViewState extends State<SplashView> {
               'assets/images/logo.png',
               width: 250,
             ),
-            // Lottie.asset("assets/images/animation.json"), Gap(10),
-
-            // Text(
-            //   "صِحَّتِي",
-            //   style: AppTextStyle.getTtileTextStyle(),
-            // ),
-            // Gap(10),
-            // Text(
-            //   "ثروتك الاولي احجز الأن",
-            //   style: AppTextStyle.getTtileTextStyle(),
-            // ),
           ],
         ),
       ),

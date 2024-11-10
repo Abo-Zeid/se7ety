@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:se7ety/core/functions/navigation.dart';
 import 'package:se7ety/core/utils/colors.dart';
 import 'package:se7ety/core/utils/text_style.dart';
 import 'package:se7ety/feature/auth/data/model/doctor_model.dart';
+import 'package:se7ety/feature/patient/presentation/page/search/page/doctor_profile_view.dart';
 
 class DoctorCard extends StatelessWidget {
+  final DoctorModel doctor;
+  final bool isClickable;
+
   const DoctorCard({
     super.key,
     required this.doctor,
     this.isClickable = true,
   });
 
-  final DoctorModel doctor;
-  final bool isClickable;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -33,9 +36,9 @@ class DoctorCard extends StatelessWidget {
       ),
       child: InkWell(
         onTap: () {
-          // if (isClickable) {
-          //   push(context, DoctorProfile(doctorModel: doctor));
-          // }
+          if (isClickable) {
+            push(context, DoctorProfile(doctorModel: doctor));
+          }
         },
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -52,7 +55,7 @@ class DoctorCard extends StatelessWidget {
                   doctor.image ?? '',
                   height: 50,
                   width: 50,
-                  fit: BoxFit.contain,
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
@@ -66,11 +69,14 @@ class DoctorCard extends StatelessWidget {
                     doctor.name ?? '',
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: AppTextStyle.getbodyTextStyle(fontSize: 16),
+                    style: getbodyTextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   Text(
                     doctor.specialization ?? '',
-                    style: AppTextStyle.getbodyTextStyle(),
+                    style: getbodyTextStyle(color: AppColors.textColor),
                   ),
                 ],
               ),
@@ -81,7 +87,7 @@ class DoctorCard extends StatelessWidget {
               children: [
                 Text(
                   doctor.rating.toString(),
-                  style: AppTextStyle.getbodyTextStyle(),
+                  style: getbodyTextStyle(),
                 ),
                 const Gap(3),
                 const Icon(

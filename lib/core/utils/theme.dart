@@ -5,8 +5,14 @@ class AppThemes {
   static ThemeData lightTheme = ThemeData(
       fontFamily: 'cairo',
       scaffoldBackgroundColor: AppColors.whiteColor,
-      appBarTheme: const AppBarTheme(
-        backgroundColor: AppColors.whiteColor,
+      appBarTheme: AppBarTheme(
+        backgroundColor: AppColors.primaryColor,
+        foregroundColor: AppColors.whiteColor,
+        titleTextStyle: TextStyle(
+            color: AppColors.whiteColor,
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            fontFamily: "cairo"),
         centerTitle: true,
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(

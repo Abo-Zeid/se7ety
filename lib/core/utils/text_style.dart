@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:se7ety/core/utils/colors.dart';
 
-class AppTextStyle {
-  static getHeadlineTextStyle(
+   getHeadlineTextStyle(
       {double fontSize = 30, fontWeight = FontWeight.normal, Color? color}) {
     return TextStyle(
       fontSize: fontSize,
@@ -11,7 +10,7 @@ class AppTextStyle {
     );
   }
 
-  static getTtileTextStyle(
+   getTtileTextStyle(
       {double? fontSize, FontWeight? fontWeight, Color? color}) {
     return TextStyle(
       fontSize: fontSize ?? 20,
@@ -20,7 +19,7 @@ class AppTextStyle {
     );
   }
 
-  static getbodyTextStyle(
+   getbodyTextStyle(
       {double? fontSize, FontWeight? fontWeight, Color? color}) {
     return TextStyle(
       fontSize: fontSize ?? 16,
@@ -29,7 +28,7 @@ class AppTextStyle {
     );
   }
 
-  static getSmallTextStyle(
+   getSmallTextStyle(
       {double? fontSize, FontWeight? fontWeight, Color? color}) {
     return TextStyle(
       fontSize: fontSize ?? 14,
@@ -37,4 +36,4 @@ class AppTextStyle {
       color: color ?? AppColors.primaryColor,
     );
   }
-}
+
