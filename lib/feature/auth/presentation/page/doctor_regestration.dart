@@ -17,7 +17,7 @@ import 'package:se7ety/core/utils/text_style.dart';
 import 'package:se7ety/feature/auth/data/model/doctor_model.dart';
 import 'package:se7ety/feature/auth/presentation/bloc/auth_bloc.dart';
 import 'package:se7ety/feature/auth/presentation/bloc/auth_state.dart';
-import 'package:se7ety/feature/doctor/nav_bar.dart';
+import 'package:se7ety/feature/doctor/nav_bar_widget.dart';
 
 import '../bloc/auth_event.dart';
 
@@ -287,9 +287,7 @@ class _DoctorRegistrationViewState extends State<DoctorRegistrationView> {
                               ),
                             ),
                           ),
-                          const SizedBox(
-                            width: 10,
-                          ),
+                          Gap(10),
 
                           //---------- End Time ----------------
                           Expanded(

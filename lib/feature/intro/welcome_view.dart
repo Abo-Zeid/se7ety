@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:se7ety/core/enum/user_type.dart';
 import 'package:se7ety/core/functions/navigation.dart';
+import 'package:se7ety/core/services/local_storage.dart';
 import 'package:se7ety/core/utils/colors.dart';
 import 'package:se7ety/core/utils/text_style.dart';
 import 'package:se7ety/core/widgets/custom_button.dart';
@@ -60,6 +61,7 @@ class WelcomeView extends StatelessWidget {
                     height: 50,
                     color: AppColors.whiteColor.withOpacity(0.7),
                     onPressed: () {
+                      AppLocalStorage.setUserType( UserType.doctor);
                       push(
                           context,
                           const LoginView(
@@ -74,6 +76,8 @@ class WelcomeView extends StatelessWidget {
                     height: 50,
                     color: AppColors.whiteColor.withOpacity(0.7),
                     onPressed: () {
+                                           AppLocalStorage.setUserType(UserType.patient);
+
                       push(
                           context,
                           const LoginView(

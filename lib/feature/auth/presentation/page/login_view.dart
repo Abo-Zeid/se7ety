@@ -14,7 +14,7 @@ import 'package:se7ety/feature/auth/presentation/bloc/auth_bloc.dart';
 import 'package:se7ety/feature/auth/presentation/bloc/auth_event.dart';
 import 'package:se7ety/feature/auth/presentation/bloc/auth_state.dart';
 import 'package:se7ety/feature/auth/presentation/page/register_view.dart';
-import 'package:se7ety/feature/doctor/nav_bar.dart';
+import 'package:se7ety/feature/doctor/nav_bar_widget.dart';
 import 'package:se7ety/feature/patient/nav_bar.dart';
 
 class LoginView extends StatefulWidget {

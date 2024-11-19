@@ -27,6 +27,7 @@ class _OnbordingViewState extends State<OnboardingView> {
       textDirection: TextDirection.rtl,
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: AppColors.whiteColor,
           actions: [
             TextButton(
               onPressed: () {

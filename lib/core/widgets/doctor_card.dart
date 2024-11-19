@@ -4,7 +4,7 @@ import 'package:se7ety/core/functions/navigation.dart';
 import 'package:se7ety/core/utils/colors.dart';
 import 'package:se7ety/core/utils/text_style.dart';
 import 'package:se7ety/feature/auth/data/model/doctor_model.dart';
-import 'package:se7ety/feature/patient/presentation/page/search/page/doctor_profile_view.dart';
+import 'package:se7ety/feature/patient/search/page/doctor_profile_view.dart';
 
 class DoctorCard extends StatelessWidget {
   final DoctorModel doctor;
@@ -30,7 +30,7 @@ class DoctorCard extends StatelessWidget {
           BoxShadow(
             offset: const Offset(-3, 0),
             blurRadius: 15,
-            color: Colors.grey.withOpacity(.1),
+            color: AppColors.greyColor.withOpacity(.1),
           )
         ],
       ),

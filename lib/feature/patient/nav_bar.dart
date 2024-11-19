@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:se7ety/core/utils/colors.dart';
 import 'package:se7ety/core/utils/text_style.dart';
-import 'package:se7ety/feature/patient/presentation/page/home/presentation/page/home_view.dart';
-import 'package:se7ety/feature/patient/presentation/page/profile/page/profile_view.dart';
-import 'package:se7ety/feature/patient/presentation/page/search/page/search_view.dart';
+import 'package:se7ety/feature/patient/home/presentation/page/home_view.dart';
+import 'package:se7ety/feature/patient/profile/page/profile_view.dart';
+import 'package:se7ety/feature/patient/search/page/search_view.dart';
 
 class PatientNavBar extends StatefulWidget {
   const PatientNavBar({super.key});
@@ -26,12 +26,12 @@ class MainPageState extends State<PatientNavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.whiteColor,
       body: _pages[_selectedIndex],
       bottomNavigationBar: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: AppColors.whiteColor,
           borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(20),
             topRight: Radius.circular(20),
@@ -39,18 +39,18 @@ class MainPageState extends State<PatientNavBar> {
           boxShadow: [
             BoxShadow(
               blurRadius: 20,
-              color: Colors.black.withOpacity(.2),
+              color: AppColors.textColor.withOpacity(.2),
             ),
           ],
         ),
         child: GNav(
           curve: Curves.easeOutExpo,
-          rippleColor: Colors.grey,
-          hoverColor: Colors.grey,
+          rippleColor: AppColors.greyColor,
+          hoverColor: AppColors.greyColor,
           haptic: true,
           tabBorderRadius: 20,
           gap: 5,
-          activeColor: Colors.white,
+          activeColor: AppColors.whiteColor,
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
           duration: const Duration(milliseconds: 400),
           tabBackgroundColor: AppColors.primaryColor,
