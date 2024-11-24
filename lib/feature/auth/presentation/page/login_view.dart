@@ -60,6 +60,13 @@ class _LoginViewState extends State<LoginView> {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: AppColors.whiteColor,
+          leading: IconButton(
+            color: AppColors.primaryColor,
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
         ),
         bottomNavigationBar: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -94,7 +101,7 @@ class _LoginViewState extends State<LoginView> {
                   const Gap(30),
                   Text(
                     "سجل دخول كـ  ${handelUserType()}",
-                    style: getTtileTextStyle(color: AppColors.primaryColor),
+                    style: getTitleTextStyle(color: AppColors.primaryColor),
                   ),
                   const Gap(30),
                   TextFormField(

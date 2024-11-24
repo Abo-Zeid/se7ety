@@ -171,7 +171,7 @@ class MyAppointmentListState extends State<MyAppointmentList> {
                                   padding: const EdgeInsets.only(left: 5),
                                   child: Text(
                                     'د. ${document['doctor']}',
-                                    style: getTtileTextStyle(),
+                                    style: getTitleTextStyle(),
                                   ),
                                 ),
                               ],
@@ -245,9 +245,7 @@ class MyAppointmentListState extends State<MyAppointmentList> {
                                         ),
                                       ],
                                     ),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
+                                    Gap(10),
                                     SizedBox(
                                       width: double.infinity,
                                       child: ElevatedButton(

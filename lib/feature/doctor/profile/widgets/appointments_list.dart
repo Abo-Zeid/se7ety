@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
 import 'package:se7ety/core/utils/colors.dart';
 import 'package:se7ety/core/utils/text_style.dart';
@@ -83,16 +82,6 @@ class MyAppointmentsHistoryState extends State<MyAppointmentsHistory> {
     }
   }
 
-  _compareDate(String date) {
-    if (_dateFormatter(DateTime.now().toString())
-            .compareTo(_dateFormatter(date)) ==
-        0) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
   @override
   void initState() {
     super.initState();
@@ -107,7 +96,7 @@ class MyAppointmentsHistoryState extends State<MyAppointmentsHistory> {
             .collection('appointments')
             .doc('appointments')
             .collection('all')
-            .where('doctorID', isEqualTo: '${user!.email}')
+            .where('patientID', isEqualTo: '${user!.email}')
             .orderBy('date', descending: false)
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -141,7 +130,9 @@ class MyAppointmentsHistoryState extends State<MyAppointmentsHistory> {
                     }
                     return Column(
                       children: [
-                        Gap(15),
+                        const SizedBox(
+                          height: 15,
+                        ),
                         Container(
                           padding: const EdgeInsets.only(
                             left: 10,
@@ -154,7 +145,7 @@ class MyAppointmentsHistoryState extends State<MyAppointmentsHistory> {
                               BoxShadow(
                                 offset: const Offset(-3, 0),
                                 blurRadius: 15,
-                                color: AppColors.greyColor.withOpacity(.1),
+                                color: Colors.grey.withOpacity(.1),
                               )
                             ],
                           ),
@@ -172,7 +163,7 @@ class MyAppointmentsHistoryState extends State<MyAppointmentsHistory> {
                                   padding: const EdgeInsets.only(left: 5),
                                   child: Text(
                                     'د. ${document['doctor']}',
-                                    style: getTtileTextStyle(),
+                                    style: getTitleTextStyle(),
                                   ),
                                 ),
                               ],
@@ -186,23 +177,17 @@ class MyAppointmentsHistoryState extends State<MyAppointmentsHistory> {
                                       const Icon(Icons.calendar_month_rounded,
                                           color: AppColors.primaryColor,
                                           size: 16),
-                                      Gap(10),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
                                       Text(
                                         _dateFormatter(document['date']
                                             .toDate()
                                             .toString()),
                                         style: getbodyTextStyle(),
                                       ),
-                                      Gap(30),
-                                      Text(
-                                        _compareDate(document['date']
-                                                .toDate()
-                                                .toString())
-                                            ? "اليوم"
-                                            : "",
-                                        style: getbodyTextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.green),
+                                      const SizedBox(
+                                        width: 30,
                                       ),
                                     ],
                                   ),
@@ -211,7 +196,9 @@ class MyAppointmentsHistoryState extends State<MyAppointmentsHistory> {
                                       const Icon(Icons.watch_later_outlined,
                                           color: AppColors.primaryColor,
                                           size: 16),
-                                      Gap(10),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
                                       Text(
                                         _timeFormatter(
                                           document['date'].toDate().toString(),
@@ -234,19 +221,25 @@ class MyAppointmentsHistoryState extends State<MyAppointmentsHistory> {
                                     Text(
                                       'اسم المريض: ${document['name']}',
                                     ),
-                                    Gap(10),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
                                     Row(
                                       children: [
                                         const Icon(Icons.location_on_rounded,
                                             color: AppColors.primaryColor,
                                             size: 16),
-                                        Gap(10),
+                                        const SizedBox(
+                                          width: 10,
+                                        ),
                                         Text(
                                           document['location'],
                                         ),
                                       ],
                                     ),
-                                    Gap(10),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
                                     SizedBox(
                                       width: double.infinity,
                                       child: ElevatedButton(

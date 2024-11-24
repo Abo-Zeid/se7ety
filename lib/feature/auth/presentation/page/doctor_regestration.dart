@@ -99,6 +99,8 @@ class _DoctorRegistrationViewState extends State<DoctorRegistrationView> {
             showErrorDialog(context, state.error);
           } else if (state is UpdateDoctorLoadingState) {
             showLoadingDialog(context);
+          } else {
+            Navigator.pop(context);
           }
         },
         child: SingleChildScrollView(
@@ -387,6 +389,8 @@ class _DoctorRegistrationViewState extends State<DoctorRegistrationView> {
                       bio: _bio.text,
                     )));
               } else {
+                Navigator.pop(context);
+
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
                     content: Text('من فضلك قم بتحميل صورتك الشخصية'),

@@ -28,7 +28,7 @@ class UserSettingsState extends State<UserSettings> {
           child: IconButton(
             splashRadius: 25,
             icon: const Icon(
-              Icons.arrow_back_ios,
+              Icons.arrow_back,
               color: AppColors.whiteColor,
             ),
             onPressed: () => Navigator.of(context).pop(),
@@ -91,7 +91,7 @@ class UserSettingsState extends State<UserSettings> {
                 },
                 child: Text(
                   'تسجل خروج',
-                  style: getTtileTextStyle(
+                  style: getTitleTextStyle(
                       color: AppColors.whiteColor, fontSize: 14),
                 ),
               ),

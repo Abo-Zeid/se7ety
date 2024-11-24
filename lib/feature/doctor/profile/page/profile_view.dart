@@ -149,10 +149,10 @@ class PatientProfileState extends State<DoctorProfileView> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "${userData!['name']}",
+                                    "${userData!['name'] ?? ""}",
                                     maxLines: 2,
                                     overflow: TextOverflow.ellipsis,
-                                    style: getTtileTextStyle(),
+                                    style: getTitleTextStyle(),
                                   ),
                                   Gap(10),
                                   Text(

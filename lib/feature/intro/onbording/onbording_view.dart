@@ -37,7 +37,7 @@ class _OnbordingViewState extends State<OnboardingView> {
               },
               child: Text(
                 "تخطي",
-                style: getTtileTextStyle(
+                style: getTitleTextStyle(
                   color: AppColors.primaryColor,
                 ),
               ),
@@ -69,7 +69,7 @@ class _OnbordingViewState extends State<OnboardingView> {
                         const Gap(20),
                         Text(
                           pages[index].title,
-                          style: getTtileTextStyle(),
+                          style: getTitleTextStyle(),
                         ),
                         const Gap(10),
                         Text(

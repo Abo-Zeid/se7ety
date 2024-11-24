@@ -15,7 +15,7 @@ class SpecialistsBanner extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("التخصصات", style: getTtileTextStyle(fontSize: 16)),
+        Text("التخصصات", style: getTitleTextStyle(fontSize: 16)),
         SizedBox(
           height: 230,
           width: double.infinity,
@@ -95,7 +95,7 @@ class ItemCardWidget extends StatelessWidget {
                 const Gap(10),
                 Text(title,
                     textAlign: TextAlign.center,
-                    style: getTtileTextStyle(
+                    style: getTitleTextStyle(
                         color: AppColors.whiteColor, fontSize: 14)),
                 Gap(20),
               ],

@@ -61,18 +61,18 @@ class HomePageState extends State<PatientHomeView> {
                 children: [
                   TextSpan(
                     text: 'مرحبا، ',
-                    style: getTtileTextStyle(
+                    style: getTitleTextStyle(
                         fontSize: 18, color: AppColors.textColor),
                   ),
                   TextSpan(
                     text: user?.displayName,
-                    style: getTtileTextStyle(color: AppColors.primaryColor),
+                    style: getTitleTextStyle(color: AppColors.primaryColor),
                   ),
                 ],
               )),
               const Gap(10),
               Text("احجز الآن وكن جزءًا من رحلتك الصحية.",
-                  style: getTtileTextStyle(
+                  style: getTitleTextStyle(
                       color: AppColors.textColor, fontSize: 25)),
               Gap(15),
 
@@ -145,7 +145,7 @@ class HomePageState extends State<PatientHomeView> {
               Text(
                 "الأعلي تقييماً",
                 textAlign: TextAlign.center,
-                style: getTtileTextStyle(fontSize: 16),
+                style: getTitleTextStyle(fontSize: 16),
               ),
               Gap(10),
               const TopRatedList(),

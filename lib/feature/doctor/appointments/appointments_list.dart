@@ -171,7 +171,7 @@ class DoctorAppointmentListState extends State<DoctorAppointmentList> {
                                   padding: const EdgeInsets.only(left: 5),
                                   child: Text(
                                     '${document['name']}',
-                                    style: getTtileTextStyle(),
+                                    style: getTitleTextStyle(),
                                   ),
                                 ),
                               ],

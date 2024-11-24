@@ -3,12 +3,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
+import 'package:se7ety/core/functions/navigation.dart';
 import 'package:se7ety/core/utils/colors.dart';
 import 'package:se7ety/core/utils/text_style.dart';
+import 'package:se7ety/core/widgets/alert_dialog.dart';
 import 'package:se7ety/core/widgets/custom_button.dart';
 import 'package:se7ety/core/widgets/doctor_card.dart';
 import 'package:se7ety/feature/auth/data/model/doctor_model.dart';
 import 'package:se7ety/feature/patient/booking/data/available_appointments.dart';
+import 'package:se7ety/feature/patient/nav_bar.dart';
 
 class BookingView extends StatefulWidget {
   final DoctorModel doctor;
@@ -79,7 +82,7 @@ class BookingViewState extends State<BookingView> {
                   children: [
                     Text(
                       '-- ادخل بيانات الحجز --',
-                      style: getTtileTextStyle(),
+                      style: getTitleTextStyle(),
                     ),
                     Gap(15),
                     Padding(
@@ -241,14 +244,14 @@ class BookingViewState extends State<BookingView> {
           onPressed: () {
             if (_formKey.currentState!.validate() && selectedIndex != -1) {
               _createAppointment();
-              // showAlertDialog(
-              //   context,
-              //   title: 'تم تسجيل الحجز !',
-              //   ok: 'اضغط للانتقال',
-              //   onTap: () {
-              //     pushAndRemoveUntil(context, const PatientNavBar());
-              //   },
-              // );
+              showAlertDialog(
+                context,
+                title: 'تم تسجيل الحجز !',
+                ok: 'اضغط للانتقال',
+                onTap: () {
+                  pushAndRemoveUntil(context, const PatientNavBar());
+                },
+              );
             }
           },
         ),

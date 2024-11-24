@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:se7ety/core/utils/colors.dart';
 import 'package:se7ety/core/utils/text_style.dart';
+import 'package:se7ety/feature/patient/appointments/appointments_view.dart';
 import 'package:se7ety/feature/patient/home/presentation/page/home_view.dart';
 import 'package:se7ety/feature/patient/profile/page/profile_view.dart';
 import 'package:se7ety/feature/patient/search/page/search_view.dart';
@@ -18,8 +19,7 @@ class MainPageState extends State<PatientNavBar> {
   final List _pages = [
     const PatientHomeView(),
     const SearchView(),
- // const MyAppointments(),
-    const PatientHomeView(),
+    const MyAppointments(),
     const PatientProfile(),
   ];
 

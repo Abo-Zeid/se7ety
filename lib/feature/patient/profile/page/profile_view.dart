@@ -10,6 +10,7 @@ import 'package:se7ety/core/functions/navigation.dart';
 import 'package:se7ety/core/utils/colors.dart';
 import 'package:se7ety/core/utils/text_style.dart';
 import 'package:se7ety/core/widgets/custom_button.dart';
+import 'package:se7ety/feature/doctor/profile/widgets/appointments_list.dart';
 import 'package:se7ety/feature/patient/profile/page/settings_view.dart';
 import 'package:se7ety/feature/patient/search/widgets/item_tile.dart';
 
@@ -156,7 +157,7 @@ class PatientProfileState extends State<PatientProfile> {
                                     "${userData!['name']}",
                                     maxLines: 2,
                                     overflow: TextOverflow.ellipsis,
-                                    style: getTtileTextStyle(),
+                                    style: getTitleTextStyle(),
                                   ),
                                   Gap(15),
                                   (userData['city'] == '')
@@ -225,7 +226,7 @@ class PatientProfileState extends State<PatientProfile> {
                           "حجوزاتي",
                           style: getbodyTextStyle(fontWeight: FontWeight.w600),
                         ),
-                        //const MyAppointmentsHistory()
+                        const MyAppointmentsHistory()
                       ],
                     )),
               );

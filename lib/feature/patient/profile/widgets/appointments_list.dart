@@ -116,7 +116,7 @@ class MyAppointmentsHistoryState extends State<MyAppointmentsHistory> {
               child: CircularProgressIndicator(),
             );
           }
-          return snapshot.data!.docs.isEmpty
+          return snapshot.data!.docs.isNotEmpty
               ? Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -141,8 +141,7 @@ class MyAppointmentsHistoryState extends State<MyAppointmentsHistory> {
                     }
                     return Column(
                       children: [
-                                                Gap(15),
-
+                        Gap(15),
                         Container(
                           padding: const EdgeInsets.only(
                             left: 10,
@@ -173,7 +172,7 @@ class MyAppointmentsHistoryState extends State<MyAppointmentsHistory> {
                                   padding: const EdgeInsets.only(left: 5),
                                   child: Text(
                                     'د. ${document['doctor']}',
-                                    style: getTtileTextStyle(),
+                                    style: getTitleTextStyle(),
                                   ),
                                 ),
                               ],
@@ -187,16 +186,14 @@ class MyAppointmentsHistoryState extends State<MyAppointmentsHistory> {
                                       const Icon(Icons.calendar_month_rounded,
                                           color: AppColors.primaryColor,
                                           size: 16),
-                                                               Gap(10),
-
+                                      Gap(10),
                                       Text(
                                         _dateFormatter(document['date']
                                             .toDate()
                                             .toString()),
                                         style: getbodyTextStyle(),
                                       ),
-                                                              Gap(30),
-
+                                      Gap(30),
                                       Text(
                                         _compareDate(document['date']
                                                 .toDate()
@@ -214,8 +211,7 @@ class MyAppointmentsHistoryState extends State<MyAppointmentsHistory> {
                                       const Icon(Icons.watch_later_outlined,
                                           color: AppColors.primaryColor,
                                           size: 16),
-                                                              Gap(10),
-
+                                      Gap(10),
                                       Text(
                                         _timeFormatter(
                                           document['date'].toDate().toString(),
@@ -238,22 +234,19 @@ class MyAppointmentsHistoryState extends State<MyAppointmentsHistory> {
                                     Text(
                                       'اسم المريض: ${document['name']}',
                                     ),
-                                                            Gap(10),
-
+                                    Gap(10),
                                     Row(
                                       children: [
                                         const Icon(Icons.location_on_rounded,
                                             color: AppColors.primaryColor,
                                             size: 16),
-                                                               Gap(10),
-
+                                        Gap(10),
                                         Text(
                                           document['location'],
                                         ),
                                       ],
                                     ),
-                                                           Gap(10),
-
+                                    Gap(10),
                                     SizedBox(
                                       width: double.infinity,
                                       child: ElevatedButton(

@@ -41,6 +41,13 @@ class _RegisterViewState extends State<RegisterView> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.whiteColor,
+        leading: IconButton(
+          color: AppColors.primaryColor,
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       bottomNavigationBar: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -90,7 +97,7 @@ class _RegisterViewState extends State<RegisterView> {
                   const Gap(30),
                   Text(
                     "سجل حساب جديد كـ  ${handelUserType()}",
-                    style: getTtileTextStyle(color: AppColors.primaryColor),
+                    style: getTitleTextStyle(color: AppColors.primaryColor),
                   ),
                   const Gap(20),
                   TextFormField(
@@ -141,7 +148,7 @@ class _RegisterViewState extends State<RegisterView> {
                     textDirection: TextDirection.ltr,
                     decoration: InputDecoration(
                         hintStyle:
-                            getTtileTextStyle(color: AppColors.greyColor),
+                            getTitleTextStyle(color: AppColors.greyColor),
                         hintTextDirection: TextDirection.ltr,
                         hintText: "* * * * * * *",
                         prefixIcon: const Icon(

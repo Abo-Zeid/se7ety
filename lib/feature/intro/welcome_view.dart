@@ -52,22 +52,7 @@ class WelcomeView extends StatelessWidget {
                 children: [
                   Text(
                     "سجل دلوقتي كـ ",
-                    style: getTtileTextStyle(color: AppColors.whiteColor),
-                  ),
-                  const Gap(20),
-                  CustomButton(
-                    text: " دكتور",
-                    fontsize: 24,
-                    height: 50,
-                    color: AppColors.whiteColor.withOpacity(0.7),
-                    onPressed: () {
-                      AppLocalStorage.setUserType( UserType.doctor);
-                      push(
-                          context,
-                          const LoginView(
-                            userType: UserType.doctor,
-                          ));
-                    },
+                    style: getTitleTextStyle(color: AppColors.whiteColor),
                   ),
                   const Gap(20),
                   CustomButton(
@@ -76,12 +61,27 @@ class WelcomeView extends StatelessWidget {
                     height: 50,
                     color: AppColors.whiteColor.withOpacity(0.7),
                     onPressed: () {
-                                           AppLocalStorage.setUserType(UserType.patient);
+                      AppLocalStorage.setUserType(UserType.patient);
 
                       push(
                           context,
                           const LoginView(
                             userType: UserType.patient,
+                          ));
+                    },
+                  ),
+                  const Gap(20),
+                  CustomButton(
+                    text: " دكتور",
+                    fontsize: 24,
+                    height: 50,
+                    color: AppColors.whiteColor.withOpacity(0.7),
+                    onPressed: () {
+                      AppLocalStorage.setUserType(UserType.doctor);
+                      push(
+                          context,
+                          const LoginView(
+                            userType: UserType.doctor,
                           ));
                     },
                   )

@@ -44,7 +44,7 @@ class HomePageState extends State<DoctorHomeView> {
         elevation: 0,
         title: Text(
           'صــــــحّـتــي',
-          style: getTtileTextStyle(color: AppColors.textColor),
+          style: getTitleTextStyle(color: AppColors.textColor),
         ),
       ),
       body: Padding(
@@ -63,13 +63,13 @@ class HomePageState extends State<DoctorHomeView> {
                     ),
                     TextSpan(
                       text: user?.displayName,
-                      style: getTtileTextStyle(),
+                      style: getTitleTextStyle(),
                     ),
                   ],
                 )),
                 Spacer(),
                 Text("الآن وكن جزءًا من رحلتك الصحية.",
-                    style: getTtileTextStyle(
+                    style: getTitleTextStyle(
                         color: AppColors.textColor, fontSize: 25)),
               ],
             ),

@@ -10,7 +10,7 @@ import 'package:se7ety/core/utils/colors.dart';
     );
   }
 
-   getTtileTextStyle(
+   getTitleTextStyle(
       {double? fontSize, FontWeight? fontWeight, Color? color}) {
     return TextStyle(
       fontSize: fontSize ?? 20,
