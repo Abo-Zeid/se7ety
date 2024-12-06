@@ -19,7 +19,7 @@ class DoctorAppointmentsState extends State<DoctorAppointments> {
       ),
       body: const Padding(
         padding: EdgeInsets.all(10),
-        child: DoctorAppointmentList(),
+        child: MyAppointmentsHistory(),
       ),
     );
   }

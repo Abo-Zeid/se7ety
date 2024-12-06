@@ -2,19 +2,18 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
 import 'package:se7ety/core/utils/colors.dart';
 import 'package:se7ety/core/utils/text_style.dart';
 
-class DoctorAppointmentList extends StatefulWidget {
-  const DoctorAppointmentList({super.key});
+class MyAppointmentsHistory extends StatefulWidget {
+  const MyAppointmentsHistory({super.key});
 
   @override
-  DoctorAppointmentListState createState() => DoctorAppointmentListState();
+  MyAppointmentsHistoryState createState() => MyAppointmentsHistoryState();
 }
 
-class DoctorAppointmentListState extends State<DoctorAppointmentList> {
+class MyAppointmentsHistoryState extends State<MyAppointmentsHistory> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   User? user;
 
@@ -28,7 +27,7 @@ class DoctorAppointmentListState extends State<DoctorAppointmentList> {
     return FirebaseFirestore.instance
         .collection('appointments')
         .doc('appointments')
-        .collection('pending')
+        .collection('all')
         .doc(docID)
         .delete();
   }
@@ -83,16 +82,6 @@ class DoctorAppointmentListState extends State<DoctorAppointmentList> {
     }
   }
 
-  _compareDate(String date) {
-    if (_dateFormatter(DateTime.now().toString())
-            .compareTo(_dateFormatter(date)) ==
-        0) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
   @override
   void initState() {
     super.initState();
@@ -106,8 +95,8 @@ class DoctorAppointmentListState extends State<DoctorAppointmentList> {
         stream: FirebaseFirestore.instance
             .collection('appointments')
             .doc('appointments')
-            .collection('pending')
-            .where('doctorID', isEqualTo: '${user!.email}')
+            .collection('all')
+            .where('patientID', isEqualTo: '${user!.email}')
             .orderBy('date', descending: false)
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -129,6 +118,7 @@ class DoctorAppointmentListState extends State<DoctorAppointmentList> {
                 )
               : ListView.builder(
                   scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
                   itemCount: snapshot.data?.docs.length,
                   itemBuilder: (context, index) {
                     DocumentSnapshot document = snapshot.data!.docs[index];
@@ -140,7 +130,9 @@ class DoctorAppointmentListState extends State<DoctorAppointmentList> {
                     }
                     return Column(
                       children: [
-                        Gap(15),
+                        const SizedBox(
+                          height: 15,
+                        ),
                         Container(
                           padding: const EdgeInsets.only(
                             left: 10,
@@ -153,7 +145,7 @@ class DoctorAppointmentListState extends State<DoctorAppointmentList> {
                               BoxShadow(
                                 offset: const Offset(-3, 0),
                                 blurRadius: 15,
-                                color: AppColors.greyColor.withOpacity(.1),
+                                color: Colors.grey.withOpacity(.1),
                               )
                             ],
                           ),
@@ -170,7 +162,7 @@ class DoctorAppointmentListState extends State<DoctorAppointmentList> {
                                 Padding(
                                   padding: const EdgeInsets.only(left: 5),
                                   child: Text(
-                                    '${document['name']}',
+                                    'د. ${document['doctor']}',
                                     style: getTitleTextStyle(),
                                   ),
                                 ),
@@ -185,23 +177,17 @@ class DoctorAppointmentListState extends State<DoctorAppointmentList> {
                                       const Icon(Icons.calendar_month_rounded,
                                           color: AppColors.primaryColor,
                                           size: 16),
-                                      Gap(10),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
                                       Text(
                                         _dateFormatter(document['date']
                                             .toDate()
                                             .toString()),
                                         style: getbodyTextStyle(),
                                       ),
-                                      Gap(30),
-                                      Text(
-                                        _compareDate(document['date']
-                                                .toDate()
-                                                .toString())
-                                            ? "اليوم"
-                                            : "",
-                                        style: getbodyTextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.green),
+                                      const SizedBox(
+                                        width: 30,
                                       ),
                                     ],
                                   ),
@@ -210,7 +196,9 @@ class DoctorAppointmentListState extends State<DoctorAppointmentList> {
                                       const Icon(Icons.watch_later_outlined,
                                           color: AppColors.primaryColor,
                                           size: 16),
-                                      Gap(10),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
                                       Text(
                                         _timeFormatter(
                                           document['date'].toDate().toString(),
@@ -230,18 +218,28 @@ class DoctorAppointmentListState extends State<DoctorAppointmentList> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
+                                    Text(
+                                      'اسم المريض: ${document['name']}',
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
                                     Row(
                                       children: [
                                         const Icon(Icons.location_on_rounded,
                                             color: AppColors.primaryColor,
                                             size: 16),
-                                        Gap(10),
+                                        const SizedBox(
+                                          width: 10,
+                                        ),
                                         Text(
                                           document['location'],
                                         ),
                                       ],
                                     ),
-                                    Gap(10),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
                                     SizedBox(
                                       width: double.infinity,
                                       child: ElevatedButton(

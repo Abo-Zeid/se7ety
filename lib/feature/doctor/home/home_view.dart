@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:se7ety/core/utils/colors.dart';
 import 'package:se7ety/core/utils/text_style.dart';
 
@@ -35,31 +36,32 @@ class HomePageState extends State<DoctorHomeView> {
             child: IconButton(
               splashRadius: 20,
               icon: const Icon(Icons.notifications_active,
-                  color: AppColors.textColor),
+                  color: AppColors.whiteColor),
               onPressed: () {},
             ),
           ),
         ],
-        backgroundColor: AppColors.whiteColor,
+        backgroundColor: AppColors.primaryColor,
         elevation: 0,
         title: Text(
           'صــــــحّـتــي',
-          style: getTitleTextStyle(color: AppColors.textColor),
+          style: getTitleTextStyle(color: AppColors.whiteColor),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Row(
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+      body: Stack(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text.rich(TextSpan(
                   children: [
                     TextSpan(
                       text: "مرحبا  د.",
-                      style: getbodyTextStyle(
-                          fontSize: 18, color: AppColors.textColor),
+                      style: getTitleTextStyle(
+                          fontSize: 22, color: AppColors.textColor),
                     ),
                     TextSpan(
                       text: user?.displayName,
@@ -67,14 +69,21 @@ class HomePageState extends State<DoctorHomeView> {
                     ),
                   ],
                 )),
-                Spacer(),
-                Text("الآن وكن جزءًا من رحلتك الصحية.",
-                    style: getTitleTextStyle(
-                        color: AppColors.textColor, fontSize: 25)),
+                Gap(100),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Text("الآن وكن جزءًا من رحلة رعاية مرضاك",
+                          style: getTitleTextStyle(
+                              color: AppColors.textColor, fontSize: 22)),
+                    ),
+                  ],
+                ),
               ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
