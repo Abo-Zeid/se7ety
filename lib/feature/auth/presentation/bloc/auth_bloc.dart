@@ -35,7 +35,6 @@ login(LoginEvent event, Emitter<AuthState> emit) async {
     emit(AuthErrorState(error: 'حدث خطأ غير متوقع.'));
   }
 }
-
 register(RegisterEvent event, Emitter<AuthState> emit) async {
   emit(RegisterLoadingState());
   try {
@@ -44,9 +43,17 @@ register(RegisterEvent event, Emitter<AuthState> emit) async {
       email: event.email,
       password: event.passWord,
     );
+
     User user = userCredential.user!;
-    user.updateDisplayName(event.name);
+
+    // Update the display name and ensure it completes
+    await user.updateDisplayName(event.name);
+    await user.reload(); // Ensure the changes are applied
+    user = FirebaseAuth.instance.currentUser!;
+
     AppLocalStorage.cacheData(key: AppLocalStorage.userToken, value: user.uid);
+
+    // Save user data to Firestore
     if (event.userType == UserType.patient) {
       await FirebaseFirestore.instance
           .collection("patients")
@@ -77,6 +84,7 @@ register(RegisterEvent event, Emitter<AuthState> emit) async {
         'uid': user.uid,
       });
     }
+
     AppLocalStorage.cacheData(key: AppLocalStorage.isLoggedIn, value: true);
 
     emit(RegisterSuccesState());
@@ -91,10 +99,12 @@ register(RegisterEvent event, Emitter<AuthState> emit) async {
   }
 }
 
-updateDoctorRegistration(UpdateDoctorRegistrationEvent event, Emitter<AuthState> emit) async {
+
+updateDoctorRegistration(
+    UpdateDoctorRegistrationEvent event, Emitter<AuthState> emit) async {
   emit(UpdateDoctorLoadingState());
   try {
-    FirebaseFirestore.instance
+    await FirebaseFirestore.instance
         .collection("doctors")
         .doc(event.model.uid)
         .update(event.model.toJson());

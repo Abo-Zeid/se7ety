@@ -153,7 +153,7 @@ class MyAppointmentListState extends State<MyAppointmentList> {
                               BoxShadow(
                                 offset: const Offset(-3, 0),
                                 blurRadius: 15,
-                                color: AppColors.greyColor.withOpacity(.1),
+                                color: AppColors.greyColor.withValues(alpha: 0.1)
                               )
                             ],
                           ),

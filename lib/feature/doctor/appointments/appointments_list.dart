@@ -145,7 +145,7 @@ class MyAppointmentsHistoryState extends State<MyAppointmentsHistory> {
                               BoxShadow(
                                 offset: const Offset(-3, 0),
                                 blurRadius: 15,
-                                color: Colors.grey.withOpacity(.1),
+                                color: Colors.grey.withValues(alpha: 0.1),
                               )
                             ],
                           ),

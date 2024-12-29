@@ -28,10 +28,9 @@ class DoctorCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
-            offset: const Offset(-3, 0),
-            blurRadius: 15,
-            color: AppColors.greyColor.withOpacity(.1),
-          )
+              offset: const Offset(-3, 0),
+              blurRadius: 15,
+              color: AppColors.greyColor.withValues(alpha: 0.1))
         ],
       ),
       child: InkWell(
@@ -86,7 +85,7 @@ class DoctorCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(
-                  doctor.rating.toString(),
+                  (doctor.rating?.toString() ?? "5"),
                   style: getbodyTextStyle(),
                 ),
                 const Gap(3),

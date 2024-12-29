@@ -25,9 +25,17 @@ class PatientProfileState extends State<DoctorProfileView> {
   String? profileUrl;
 
   String? userId;
+  User? user;
 
   Future<void> _getUser() async {
     userId = FirebaseAuth.instance.currentUser?.uid;
+    user = FirebaseAuth.instance.currentUser;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _getUser();
   }
 
   uploadImageToFireStore(File image, String imageName) async {
@@ -56,12 +64,6 @@ class PatientProfileState extends State<DoctorProfileView> {
     FirebaseFirestore.instance.collection('doctors').doc(userId).set({
       'image': profileUrl,
     }, SetOptions(merge: true));
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _getUser();
   }
 
   @override
@@ -149,14 +151,14 @@ class PatientProfileState extends State<DoctorProfileView> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "${userData!['name'] ?? ""}",
+                                    "${user?.displayName}",
                                     maxLines: 2,
                                     overflow: TextOverflow.ellipsis,
                                     style: getTitleTextStyle(),
                                   ),
                                   Gap(10),
                                   Text(
-                                    userData['specialization'],
+                                    userData?['specialization'],
                                     maxLines: 2,
                                     overflow: TextOverflow.ellipsis,
                                     style: getbodyTextStyle(
@@ -175,7 +177,7 @@ class PatientProfileState extends State<DoctorProfileView> {
                         ),
                         Gap(10),
                         Text(
-                          userData['bio'] == '' ? 'لم تضاف' : userData['bio'],
+                          userData?['bio'] == '' ? 'لم تضاف' : userData?['bio'],
                           style: getSmallTextStyle(color: AppColors.textColor),
                         ),
                         Gap(20),
@@ -197,11 +199,11 @@ class PatientProfileState extends State<DoctorProfileView> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               TileWidget(
-                                  text: userData['email'] ?? 'لم تضاف',
+                                  text: user?.email ?? 'لم تضاف',
                                   icon: Icons.email),
                               Gap(15),
                               TileWidget(
-                                  text: userData['phone1'], icon: Icons.call),
+                                  text: userData?['phone1'], icon: Icons.call),
                             ],
                           ),
                         ),
@@ -219,11 +221,11 @@ class PatientProfileState extends State<DoctorProfileView> {
                             children: [
                               TileWidget(
                                   text:
-                                      '${userData['openHour']}:00 - ${userData['closeHour']}:00',
+                                      '${userData?['openHour']}:00 - ${userData?['closeHour']}:00',
                                   icon: Icons.email),
                               Gap(15),
                               TileWidget(
-                                  text: userData['phone1'], icon: Icons.call),
+                                  text: userData?['phone1'], icon: Icons.call),
                             ],
                           ),
                         ),

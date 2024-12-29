@@ -33,7 +33,7 @@ class SearchViewState extends State<SearchView> {
                 borderRadius: const BorderRadius.all(Radius.circular(25)),
                 boxShadow: [
                   BoxShadow(
-                    color: AppColors.greyColor.withOpacity(.3),
+                    color: AppColors.greyColor.withValues(alpha: 0.3),
                     blurRadius: 15,
                     offset: const Offset(5, 5),
                   )

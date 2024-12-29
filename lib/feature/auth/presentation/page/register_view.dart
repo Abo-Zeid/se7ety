@@ -175,7 +175,7 @@ class _RegisterViewState extends State<RegisterView> {
                   CustomButton(
                       text: "تسجيل حساب",
                       textColor: AppColors.whiteColor,
-                      color: AppColors.primaryColor.withOpacity(0.8),
+                      color: AppColors.primaryColor.withValues(alpha: 0.8),
                       height: 50,
                       fontsize: 18,
                       onPressed: () {

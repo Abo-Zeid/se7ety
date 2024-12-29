@@ -46,7 +46,7 @@ class WelcomeView extends StatelessWidget {
               width: 500,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
-                color: AppColors.primaryColor.withOpacity(0.3),
+                color: AppColors.primaryColor.withValues(alpha: 0.3)
               ),
               child: Column(
                 children: [
@@ -59,7 +59,7 @@ class WelcomeView extends StatelessWidget {
                     text: " مريض",
                     fontsize: 24,
                     height: 50,
-                    color: AppColors.whiteColor.withOpacity(0.7),
+                    color: AppColors.whiteColor.withValues(alpha: 0.7),
                     onPressed: () {
                       AppLocalStorage.setUserType(UserType.patient);
 
@@ -75,7 +75,7 @@ class WelcomeView extends StatelessWidget {
                     text: " دكتور",
                     fontsize: 24,
                     height: 50,
-                    color: AppColors.whiteColor.withOpacity(0.7),
+                    color: AppColors.whiteColor.withValues(alpha: 0.7),
                     onPressed: () {
                       AppLocalStorage.setUserType(UserType.doctor);
                       push(

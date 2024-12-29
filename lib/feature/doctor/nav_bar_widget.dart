@@ -37,7 +37,7 @@ class MainPageState extends State<DoctorNavBar> {
           boxShadow: [
             BoxShadow(
               blurRadius: 20,
-              color: AppColors.textColor.withOpacity(.2),
+              color: AppColors.textColor.withValues(alpha: 0.2)
             ),
           ],
         ),

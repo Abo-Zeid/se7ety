@@ -42,18 +42,28 @@ class _DoctorRegistrationViewState extends State<DoctorRegistrationView> {
 
   @override
   void initState() {
+    Future<void> getUser() async {
+      user = FirebaseAuth.instance.currentUser;
+      userID = user!.uid;
+    }
+
     super.initState();
-    _getUser();
+    getUser();
   }
 
   String? _imagePath;
   File? file;
   String? profileUrl;
+  DoctorModel? doctorModel;
 
   String? userID;
-
+  User? user;
   Future<void> _getUser() async {
-    userID = FirebaseAuth.instance.currentUser!.uid;
+    user = FirebaseAuth.instance.currentUser;
+    await user?.reload();
+    user = FirebaseAuth.instance.currentUser;
+
+    userID = user?.uid;
   }
 
   Future<String> uploadImageToFirebase(File image) async {
@@ -377,17 +387,20 @@ class _DoctorRegistrationViewState extends State<DoctorRegistrationView> {
               if (_formKey.currentState!.validate() && file != null) {
                 profileUrl = await uploadImageToFirebase(file!);
                 context.read<AuthBloc>().add(UpdateDoctorRegistrationEvent(
-                        model: DoctorModel(
-                      uid: userID,
-                      image: profileUrl,
-                      phone1: _phone1.text,
-                      phone2: _phone2.text,
-                      address: _address.text,
-                      specialization: _specialization,
-                      openHour: startTime,
-                      closeHour: endTime,
-                      bio: _bio.text,
-                    )));
+                      model: DoctorModel(
+                        name: user?.displayName,
+                        email: user?.email,
+                        uid: userID,
+                        image: profileUrl,
+                        phone1: _phone1.text,
+                        phone2: _phone2.text,
+                        address: _address.text,
+                        specialization: _specialization,
+                        openHour: startTime,
+                        closeHour: endTime,
+                        bio: _bio.text,
+                      ),
+                    ));
               } else {
                 Navigator.pop(context);
 

@@ -83,7 +83,7 @@ class HomePageState extends State<PatientHomeView> {
                   borderRadius: const BorderRadius.all(Radius.circular(25)),
                   boxShadow: [
                     BoxShadow(
-                      color: AppColors.greyColor.withOpacity(.3),
+                      color: AppColors.greyColor.withValues(alpha: 0.3),
                       blurRadius: 15,
                       offset: const Offset(5, 5),
                     )
@@ -99,7 +99,7 @@ class HomePageState extends State<PatientHomeView> {
                     hintText: 'ابحث عن دكتور',
                     suffixIcon: Container(
                       decoration: BoxDecoration(
-                        color: AppColors.primaryColor.withOpacity(0.9),
+                        color: AppColors.primaryColor.withValues(alpha: 0.9),
                         borderRadius: BorderRadius.circular(17),
                       ),
                       child: IconButton(
